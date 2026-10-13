@@ -13,6 +13,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def props = new Properties()
+        def lp = rootProject.file("local.properties")
+        if (lp.exists()) lp.withInputStream { props.load(it) }
+        buildConfigField "String", "BRAINSHOP_BID", "\"${props.getProperty('brainshop.bid', '')}\""
+        buildConfigField "String", "BRAINSHOP_KEY", "\"${props.getProperty('brainshop.key', '')}\""
     }
 
     buildTypes {
