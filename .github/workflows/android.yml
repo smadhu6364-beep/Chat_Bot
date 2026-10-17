@@ -14,6 +14,6 @@ jobs:
         with:
           distribution: temurin
           java-version: "11"
-      - uses: android-actions/setup-android@v3
+      # The runner image ships the Android SDK (ANDROID_HOME); AGP fetches platform 32 itself
       - run: chmod +x gradlew
       - run: ./gradlew --no-daemon assembleDebug testDebugUnitTest
